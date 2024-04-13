@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function Home() {
@@ -38,10 +38,15 @@ function calculateFutureValueCompoundInterest(price: number, interestRate: numbe
     setIsVisible(true);
   }
 
+  useEffect(() => {
+    const output = document.getElementById("output");
+    console.log('output element: ', output);
+    output?.scrollIntoView({behavior: 'smooth'});
+  }, [isVIsible])
+
   return (
     <div>
       <h1>What&apos;s it in retirement?</h1>
-      {isVIsible && (<h2 className="text-gray-600 mb-4">Your investment will be worth {futurePrice} in retirement</h2>)}
       <div className="flex justify-center items-center h-screen">
         <form className="w-full max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -70,6 +75,7 @@ function calculateFutureValueCompoundInterest(price: number, interestRate: numbe
         {/* {isVIsible && (<p className="text-sm text-gray-600 mb-4">Your investment will be worth {futurePrice} in retirement</p>)} */}
       </form>
     </div>
+    {isVIsible && (<h2 id="output" className="text-gray-600 mb-4">Your investment will be worth {futurePrice} in retirement</h2>)}
     </div>
   );
 }
