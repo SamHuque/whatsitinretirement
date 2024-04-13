@@ -41,28 +41,34 @@ function calculateFutureValueCompoundInterest(price: number, interestRate: numbe
   return (
     <div>
       <h1>What&apos;s it in retirement?</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          How much is it?: <br></br>
-          <input
-            type="text"
-            value={number === 0 ? '' : number}
-            onChange={handleNumberChange}
-            placeholder="Enter a price"
-          />
-        </label><br></br>
-        <label>
-          How old are you?: <br></br>
-          <input
-            type="text"
-            value={age === 0 ? '' : age}
-            onChange={handleAgeChange}
-            placeholder="Enter your age"
-          />
-        </label><br></br>
-      <button type="submit">Submit</button>
-      {isVIsible && (<p>Your investment will be worth {futurePrice} in retirement</p>)}
-    </form>
+      <div className="flex justify-center items-center h-screen">
+        <form className="flex justify-center items-center h-screen" onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              How much is it?: <br></br>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                value={number === 0 ? '' : number}
+                onChange={handleNumberChange}
+                placeholder="Enter a price"
+              />
+            </label><br></br>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              How old are you?: <br></br>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                value={age === 0 ? '' : age}
+                onChange={handleAgeChange}
+                placeholder="Enter your age"
+              />
+            </label><br></br>
+          </div>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
+        {isVIsible && (<p className="text-sm text-gray-600 mb-4">Your investment will be worth {futurePrice} in retirement</p>)}
+      </form>
+    </div>
     </div>
   );
 }
